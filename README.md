@@ -18,12 +18,14 @@ Have fun!
 
 ## 📝 Table of Contents
 
+[Part One](#part1)
 - [Hello World](#hello)
 - [Basic Functions](#functions)
 - [Constants from another File](#constants)
 - [Input Variables and Loops](#iandl)
 - [Arrays](#arrays)
 
+# Part One <a name = 'part1'></a>
 ## 👋 Hello World! <a name = 'hello'></a>
 [//]: # (refer to hello.c)
 *The code for this part may be seen in* `hello.cpp`
