@@ -26,6 +26,7 @@ Have fun!
 - [Constants from another File](#constants)
 - [Input Variables and Loops](#iandl)
 - [Arrays](#arrays)
+- [Data Structures](#structures)
 
 # Part One <a name = 'part1'></a>
 ## 👋 Hello World! <a name = 'hello'></a>
@@ -235,5 +236,62 @@ Just as you would expect, we can index through the list using `v[i]` to output t
 
 If this runs properly, we'll have each string contained in the array printed out to the terminal.
 
+## 📊 Data Structures <a name = 'structures'></a>
+*The code for this part can be seen in* `structures.cpp`
+
+Now let's put what we know to use and try to recreate parts of the `<vector>` library that we might include in a program in the future. This will give us an insight of how to create a library or a personal data structure later on.
+
+Let's take at the code in `structures.cpp`:
+
+You'll notice that we started off by creating our `cvector` data structure by declaring:
+```cpp
+struct cvector {
+    int sz;
+    double* elem;
+};
+```
+**Take care that after you declare a structure that the final bracket has to be followed by a semicolon.**
+
+ Notice that in this structure that we have declared the two objects that it should keep track of: `int sz` and `double* elem`. We want for our data structure to contain information on the size of the vector in the integer `sz` and the elements of that vector in `double* elem`. 
+
+In the case of `double* elem`, the utility of using the pointer `*` is that we want for this variable `elem` to refer to other objects created by our code. The pointer makes sure that when we try to access `elem` that we will be accessing the object that it points to. In our case, it will access a double in the `v.elem` array. We'll see more of this at work later.
+
+Now, let's take a look at the next block of code below:
+```cpp
+void cvector_init(cvector& v, int s) {
+    v.elem = new double[s];
+    v.sz = s;
+}
+```
+For this block of code, we are making a function for the cvector class to use upon initialization. In our case this function will return nothing because we said `void cvector_init`, but it will do the special job of storing the above values into our cvector data structure. You can see this in the line `v.sz = s`. 
+
+You might also notice that the line for `elem` is a little more complicated. The reason for this is because when assigning the `v.elem` part for our instance of our cvector `v`, this line of code will create memory for a new double in the `v.elem` array. 
+
+This is important because C++ needs to assign memory for this spot from the computer's dynamic memory, or *heap*. Unlike python, you have to explicitly assign memory as it may be needed. 
+
+Now let's take a look at the function `rs` in the code.
+```cpp
+double rs(int s) {
+    double sum; cvector v;
+    cvector_init(v,s);
+
+    for (int i=0; i!=s; i++) {
+        cin >> v.elem[i];
+    }
+    for (int i=0; i!=s; i++) {
+        sum += v.elem[i];
+    }
+    return sum;
+}
+```
+This part of our code will create empty instances of the double `sum` and of the cvector `v`. Then, it will use the given integer s and run both s and the cvector through `cvector_init`. Upon doing this, it will ask for numbers from the standard input with `cin` and push those values into the `v.elem` (remember, that this array is of size s) for each value requested. 
+
+Finally, after this is done, it will take all of the values stored in the `v.elem` array and sum over them to give you the double `sum`.
+
+The last part of our code should be pretty intuitive! Our `main ()` function asks the user for a number of inputs per line with `rs(entries)`. Here, `entries` is a number that I arbitrarily made 3 so that `v.elem` only needs 3 elements. 
+
+If you run the code as is and type 3 numbers as requested, you should get the sum of those numbers back!
+
 ---
 *Note: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
+
