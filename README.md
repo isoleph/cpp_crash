@@ -202,7 +202,7 @@ Then, you might notice that there's a for-loop that iterates over the first arra
     }
 ```
 
-Notice that the conditions inside of the for-loop are done as follows `for(start; end; increment)`. Much like the while-loop, the for-loop will create a starting condition `int i = 0`, then it will repeatedly check against a condition `i < 10`, and then it will increment its starting contition so that it will eventually stop. In this case i++ increments the start value of i = 0 by one. Eventually, the condition being checked against `i < 10` will become false and end the loop.
+Notice that the conditions inside of the for-loop are done as follows `for(start; end; increment)`. Much like the while-loop, the for-loop will create a starting condition `int i = 0`, then it will repeatedly check against a condition `i < 10`, and then it will increment its starting contition so that it will eventually stop. In this case `i++` increments the start value of `i = 0` by one. Eventually, the condition being checked against `i < 10` will become false and end the loop.
 
 Beneath this part of the code are two other for-loops that have the purpose of printing the contents of both of those lists to the terminal. Notice that in C++, unlike python, that there are no immediate functions to print out the contents of an array. This is why these other functions are written. In the end, you will see that both arrays have the same contents as we would expect from our program. 
 
@@ -215,7 +215,7 @@ for (int& x:v) {
         x++;
     }
 ```
-In this case, the for-loop is looking at each entry in the integer list `v` and temporarily taking its value into the integer `x`. Because of this, when we `cout << x`, we get that instance of `x`  printed out to the screen. This is done with the `(int& x:v)` part in our code. This strategy will not work with strings or other objects because x++ won't necessarilly make an integer that the for-loop needs. 
+In this case, the for-loop is looking at each entry in the integer list `v` and temporarily taking its value into the integer `x`. Because of this, when we `cout << x`, we get that instance of `x`  printed out to the screen. This is done with the `(int& x:v)` part in our code. This strategy will not work with strings or other objects because `x++` won't necessarilly make an integer that the for-loop needs. 
 
 Finally, let's see how we can work with an array of strings instead of an array of integers. Let's take a look at `string_array.cpp`.
 
