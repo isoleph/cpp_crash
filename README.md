@@ -293,5 +293,5 @@ The last part of our code should be pretty intuitive! Our `main ()` function ask
 If you run the code as is and type 3 numbers as requested, you should get the sum of those numbers back!
 
 ---
-*Note: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
+*__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
 
