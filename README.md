@@ -27,6 +27,7 @@ Have fun!
 - [Input Variables and Loops](#iandl)
 - [Arrays](#arrays)
 - [Data Structures](#structures)
+- [Classes](#class)
 
 # Part One <a name = 'part1'></a>
 ## 👋 Hello World! <a name = 'hello'></a>
@@ -290,7 +291,102 @@ Finally, after this is done, it will take all of the values stored in the `v.ele
 
 The last part of our code should be pretty intuitive! Our `main ()` function asks the user for a number of inputs per line with `rs(entries)`. Here, `entries` is a number that I arbitrarily made 3 so that `v.elem` only needs 3 elements. 
 
-If you run the code as is and type 3 numbers as requested, you should get the sum of those numbers back!
+If you run the code as is and type 3 numbers as requested, you should get the sum of those numbers back.
+
+# 🎒 Classes <a name = 'class'></a>
+
+Just as you can define data structures with C++, you can also define a `class` object. These objects allow you to create methods within them that are both public and private for a user to access. A `public` method is accessible to a user whereas a `private` method is only accessible through a user-interface. Let's take a look at the code below. A more in-depth look is  beneath the code block.
+
+```cpp
+class cvector {
+    public:
+        cvector(int s): 
+            elem{ new double[s] }, 
+            sz{s} {}
+        double& operator[](int i) {
+            return elem[i];
+        }
+        int size() {
+            return sz;
+        }
+    private:
+        double* elem;
+        int sz;
+};
+```
+
+Notice right off the bat that there are two main sections of the `cvector` class we made. You can see that there are the `public` and `private` sections of the class. 
+
+Consequently, a user won't be able to neccesarrily access or manipulate the `elem` or `sz` object, but the `public` part is allowed to access them freely. 
+
+Let's take a look at the public part first. 
+
+```cpp
+public:
+    cvector(int s):
+        elem { new double [s] },
+        sz{s} {}
+```
+You might notice that the `public` section will use an integer `s`, and it will use it to allocate new memory from the heap for an array of doubles of length `s`. 
+
+It will also create an object `sz` to store the vector's size `s`. Notice that the brackets near the line `sz{s} {}` don't have anything inside of them. That's because this method's only job is to store the vector's size. 
+
+Now, let's look at the next part:
+```cpp
+double& operator[](int i) {
+    return elem[i]
+}
+int size() {
+    return sz;
+ }
+```
+
+Now this part will define an operator for the vector class. Here, we are definining an operator `[]` that will take some integer `i` and use it to return the element `i` stored in the `elem` array. You might notice that we want it to return the double stored at the address of the double at elem[i]. Later we'll see that this address is called to bring up it's double element. 
+
+ Now, let's look at the final part where:
+ 
+ ```cpp
+private:
+    double* elem;
+    int sz;
+ ```
+
+ Notice that this part will call the values stored at the addresses of the `elem` array. Then `int sz` will store the size of the array. 
+
+ We can put this new class to the test by seeing how it handles the test of summing all of the elements within it. We can do this with almost the exact same code that we saw in `structures.cpp`. Look below:
+
+```cpp
+int main () {
+    int entries = 3; double sum;
+    cout << "Please input " << entries << " entries line by line to get their sum." << endl;
+    sum = vrs(entries);
+    cout << "Sum: " << sum << endl;
+    return 0;
+}
+```
+
+Notice that much like in the last part, I arbitrarily assigned an integer called `entries` and set it to 3. Then freed space for the sum of lthe vector elements. 
+
+Then you can see that we are using a similar rs(entries) function to accomplish getting the vector sum. The code for `vrs` is below.
+
+```cpp
+double vrs(int s) {
+    cvector v(s); double sum;
+
+    for (int i=0; i!=v.size(); i++) {
+        cin>>v[i];
+    }
+    for (int i=0; i!=v.size(); i++) {
+        sum += v[i];
+    }
+    return sum;
+}
+```
+
+You can see that indexing works very similarly to an array in our new class and that we can sum over them as we did before!
+
+
+
 
 ---
 *__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
