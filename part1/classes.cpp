@@ -6,12 +6,12 @@ using namespace std;
 // except with the class object
 class cvector {
     public:
-        cvector(int s): 
-            elem{new double[s]}, sz{s} {} // create cvector
-        double& operator[](int i) {       // element subscripting
+        cvector(int s):                   // create cvector
+            elem{new double[s]}, sz{s} {} // allocate elem; store s as sz
+        double& operator[](int i) {       // enable indexing
             return elem[i]; 
         }
-        int size() {
+        int size() {                      // return size
             return sz;
         }
     private:
@@ -20,19 +20,19 @@ class cvector {
 };
 
 double vrs(int s) {
-    cvector v(s); double sum;
+    cvector v(s); double sum;             // create cvector, sum variable
 
-    for (int i=0; i!=v.size(); i++) {
+    for (int i=0; i!=v.size(); i++) {     // ask for elements
         cin>>v[i];
     }
-    for (int i=0; i!=v.size(); i++) {
+    for (int i=0; i!=v.size(); i++) {     // sum all elements
         sum += v[i];
     }
     return sum;
 }
 
 int main () {
-    int entries = 3; double sum;
+    int entries = 3; double sum;          // entries = 3 = sz =  s
     cout << "Please input " << entries << " entries line by line to get their sum." << endl;
     sum = vrs(entries);
     cout << "Sum: " << sum << endl;

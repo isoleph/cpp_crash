@@ -25,6 +25,7 @@ Have fun!
 - [Basic Functions](#functions)
 - [Constants from another File](#constants)
 - [Input Variables and Loops](#iandl)
+- [Pointers](#pointers)
 - [Arrays](#arrays)
 - [Data Structures](#structures)
 - [Classes](#class)
@@ -237,6 +238,37 @@ Just as you would expect, we can index through the list using `v[i]` to output t
 
 If this runs properly, we'll have each string contained in the array printed out to the terminal.
 
+# ➡️ Pointers <a name = 'pointers'></a>
+Pointers are objects that do as they're named, *they point to another object or the address of another object*
+
+A good way to think of pointers is under two types: `&` and `*`. Here, the ampersand means *the address to* and the star represents *the contents of*. The way I remember it is "andress" which is a horrific portmeantau of the word "address" and "and." 
+
+You must always take care that pointers fulfill their destinies and point to something. When you initiate a pointer, if it doesn't necessarilly refer to anything, be sure to assign it to a null pointer. This is one value that is shared by all pointer types untill otherwise specified.
+
+Also note that the `nullptr` object is a pointer. You can't try to assign it to any other kind of object. 
+
+Let's start by trying to understand the utility of  a pointer. Let's look at the following script:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main () {
+    int p = 3; // assign p = 3
+    cout << &p << endl; // returns address of p
+    cout << *(&p) << endl; // returns contents of address at p
+    int* q = &p; // assign pointer q with address of p
+    cout << q << endl; // print pointer q
+    cout << *q << endl; // print contents of pointer q
+    return 0;
+}
+```
+
+Hopefully this makes sense! Try playing around with the code in `pointer_intro.cpp` until it makes sense. 
+
+*In older code, some null pointers may have the value of 0 or of NULL which is potentially confusing because we don't necessarilly know that the object we are working with then is a pointer.*
+
+
 ## 📊 Data Structures <a name = 'structures'></a>
 *The code for this part can be seen in* `structures.cpp`
 
@@ -382,6 +414,8 @@ double vrs(int s) {
     return sum;
 }
 ```
+
+
 
 You can see that indexing works very similarly to an array in our new class and that we can sum over them as we did before!
 
