@@ -426,8 +426,7 @@ Just as you can make classes in C++, there are also less complicated data struct
 ```cpp
 enum class color {red, blue, green};
 
-enum class traffic_light { green, yellow, red
-};
+enum class traffic_light { green, yellow, red};
 
 // assign these values to col and light
 color col = color::red;
@@ -459,16 +458,18 @@ traffic_light operator++(traffic_light& t) {
         case traffic_light::green:
             cout << "Green -> Yellow" << endl;
             return traffic_light::yellow;
+
         case traffic_light::yellow:
             cout << "Yellow -> Red" << endl;
             return traffic_light::red;
+
         case traffic_light::red:
             cout << "Red -> Green" << endl;
             return traffic_light::green;
     }
 }
 ```
-The defined operator above allows us to create an increment operator `++i` to change the light into the next color as seen above. We can test this out by writing. 
+The defined operator above allows us to create an increment operator `++i` to change the light into the next color as seen above!
 
 *Note: if you change* `++start` *for* `start++` *, you'll see that the program no longer works. This is because ++start is a 'prefix operator' and start++ is a 'postfix operator.' If we want to use both, then we have to [define both explicitly](http://web.archive.org/web/20141021180738/http://www.parashift.com/c++-faq-lite/increment-pre-post-overloading.html#faq-13.14).*
 
