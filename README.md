@@ -418,7 +418,7 @@ double vrs(int s) {
 
 You can see that indexing works very similarly to an array in our new class and that we can sum over them as we did before!
 
-# 🔢 Enumerations <a name = 'enum'></a>
+# 🔢 Enumerations <a name = 'enums'></a>
 *The code for this part may be found in* `enums.cpp`
 
 Just as you can make classes in C++, there are also less complicated data structures that are called *enumerations*. Consider the example below. Here we are going to declare two enumeration classes: `color` and `traffic_light`. Each class will store different colors.
