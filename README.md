@@ -29,6 +29,7 @@ Have fun!
 - [Arrays](#arrays)
 - [Data Structures](#structures)
 - [Classes](#class)
+- [Enumerations](#enums)
 
 # Part One <a name = 'part1'></a>
 ## 👋 Hello World! <a name = 'hello'></a>
@@ -415,12 +416,66 @@ double vrs(int s) {
 }
 ```
 
-
-
 You can see that indexing works very similarly to an array in our new class and that we can sum over them as we did before!
 
+# 🔢 Enumerations <a name = 'enum'></a>
+*The code for this part may be found in* `enums.cpp`
 
+Just as you can make classes in C++, there are also less complicated data structures that are called *enumerations*. Consider the example below. Here we are going to declare two enumeration classes: `color` and `traffic_light`. Each class will store different colors.
 
+```cpp
+enum class color {
+    red, blue, green
+};
+
+enum class traffic_light {
+    green, yellow, red
+};
+
+// assign these values to col and light
+color col = color::red;
+traffic_light light = traffic_light::red;
+```
+See? Using enumerations, you can create a simple data type that stores values that might be necessary. 
+
+In our case, using the declaration `enum class color` instead of `enum color` is a good way of enforcing that we don't mix up our data types. This way, the program won't let us confuse a `color` object and a `traffic_light` object for each other.
+
+Consequently, you'll notice that typing the following commands fail (even though they're both red):
+
+```cpp
+color x = traffic_light::red // not a color
+traffic_light y = color::red // not a traffic light
+```
+You'll also notice that if we try to do some funny business like assigning an integer value to these enumerations, then that won't work.
+
+```cpp
+int i = color::red; // unacceptable!
+color c = 2; // no!
+```
+Moreover, by default the `enum class` will only offer three operations: assignments, initializations, and comparisons; i.e. a = b, a == b, and/or a > b. 
+
+We can, however, define more operators as we might see fit like below:
+
+```cpp
+traffic_light operator++(traffic_light& t) {
+    switch (t) {
+        case traffic_light::green:
+            cout << "Green -> Yellow" << endl;
+            return traffic_light::yellow;
+        case traffic_light::yellow:
+            cout << "Yellow -> Red" << endl;
+            return traffic_light::red;
+        case traffic_light::red:
+            cout << "Red -> Green" << endl;
+            return traffic_light::green;
+    }
+}
+```
+The defined operator above allows us to create an increment operator `++i` to change the light into the next color as seen above. We can test this out by writing. 
+
+*Note: if you change* `++start` *for* `start++` *, you'll see that the program no longer works. This is because ++start is a 'prefix operator' and start++ is a 'postfix operator.' If we want to use both, then we have to [define both explicitly](http://web.archive.org/web/20141021180738/http://www.parashift.com/c++-faq-lite/increment-pre-post-overloading.html#faq-13.14).*
+
+If you follow `enums.cpp` correctly, you'll notice that I wrote it so that you're updated as the new instances of the traffic_light are assigned!
 
 ---
 *__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
