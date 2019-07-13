@@ -27,7 +27,7 @@ Have fun!
 - [Input Variables and Loops](#iandl)
 - [Pointers](#pointers)
 - [Arrays](#arrays)
-- [Strctures et al.](#structures)
+- [Structures et al.](#structures)
     - [Data Structures](#structures)
     - [Classes](#class)
     - [Enumerations](#enums)
