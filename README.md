@@ -27,9 +27,10 @@ Have fun!
 - [Input Variables and Loops](#iandl)
 - [Pointers](#pointers)
 - [Arrays](#arrays)
-- [Data Structures](#structures)
-- [Classes](#class)
-- [Enumerations](#enums)
+- [Strctures et al.](#structures)
+    - [Data Structures](#structures)
+    - [Classes](#class)
+    - [Enumerations](#enums)
 - [Namespaces](#names)
 - [Error Handling](#error)
 
