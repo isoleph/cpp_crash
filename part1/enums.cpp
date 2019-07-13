@@ -10,9 +10,11 @@ traffic_light operator++(traffic_light& t) {
         case traffic_light::green:
             cout << "Green -> Yellow" << endl;
             return traffic_light::yellow;
+
         case traffic_light::yellow:
             cout << "Yellow -> Red" << endl;
             return traffic_light::red;
+
         case traffic_light::red:
             cout << "Red -> Green" << endl;
             return traffic_light::green;

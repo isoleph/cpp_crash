@@ -30,6 +30,8 @@ Have fun!
 - [Data Structures](#structures)
 - [Classes](#class)
 - [Enumerations](#enums)
+- [Namespaces](#names)
+- [Error Handling](#error)
 
 # Part One <a name = 'part1'></a>
 ## 👋 Hello World! <a name = 'hello'></a>
@@ -473,7 +475,120 @@ The defined operator above allows us to create an increment operator `++i` to ch
 
 *Note: if you change* `++start` *for* `start++` *, you'll see that the program no longer works. This is because ++start is a 'prefix operator' and start++ is a 'postfix operator.' If we want to use both, then we have to [define both explicitly](http://web.archive.org/web/20141021180738/http://www.parashift.com/c++-faq-lite/increment-pre-post-overloading.html#faq-13.14).*
 
-If you follow `enums.cpp` correctly, you'll notice that I wrote it so that you're updated as the new instances of the traffic_light are assigned!
+If you follow `enums.cpp` correctly, you'll notice that I wrote it so that you're updated as the new instances of the `traffic_light` are assigned!
+
+# 🤙  Namespaces <a name ='names'></a>
+
+Just like classes or enumarations, namespaces also exist to prevent you from confusing some functions or declarations from others. Let's try to create a complex numbers namespace below in a custom namespace. 
+
+*The code below does not work; it has a lot of pieces missing and is meant to demonstrate the nature of namespaces. For all intents and purposes, consider this [pseudo-code](http://www.wikipedia.org/wiki/pseudocode).*
+
+```cpp
+// create a custom namespace for complex numbers
+namespace custom {
+    
+    // define a custom complex class
+    class complex {
+        // stuff here and definitons
+    };
+    complex sqrt(complex);
+    // more namepsace stuff here
+    int main ();
+}
+
+// define the main function for our custom namespace
+int custom::main () {
+    complex z {1,2}; 
+    auto z2 = sqrt(z);
+    // print real and imaginary part of complex number below
+    std::cout << '{' << z2.real() << ',' << z2.imag() << '}' << std::endl;
+    // more definitions as may be needed
+    return 0;
+};
+
+int main () {
+    return custom::main ();
+}
+```
+
+Notice that by creating the namespace, we can clarify where our functions are coming from. You can see an example of this in the [Hello World!](#hello) lesson. Recall that when you start off a C++ program with `using namespace std;` this means that you won't explicitly have to invoke the `std` namespace by writing things like `std::cout`. 
+
+You'll also notice above that we invoked our own `custom` namespace with declarations like `custom::main`. This is a very handy feature to prevent you from mixing up where functions come from. 
+
+*Note: when you define a function to exist within a namespace, be sure to declare a semicolon after your last bracket. I don't know why, but C++ wants it.*
+
+# ⚠️  Error Handling <a name='error'></a>
+
+Error Handling and Exceptions become necessities once projects get big enough to always run into errors. Because of this, you need a way to catch errors that might happen and have some recourse for those cases. 
+
+In order to do this, C++ has the `try` and `catch` features. Let's go back to our [custom vector class](#class) for a moment.
+
+Imagine a scenario where a user tries to access an element out of our cvector's range. We need a way to alert the user that they tried to do this and that it doesn't work. This is error handling. 
+
+To implement error handling, we could add the following piece to our custom vector class to catch an out of range error.
+```cpp
+double& cvector::operator[](int i) {
+
+    // if i < 0 or size()
+    if (i < 0 || size() <= i) throw out_of_range {"cvector::operator[]"};
+    return elem[i];
+}
+```
+The MVP of this game is `throw`. This function will transfer the control of the function to the *out_of_range* exception handler from the C++ Standard Library. This happens in the case that one of these errors is triggered in our `if` statement. Let's look at the following block of pseudo-code of what will happen when our function `f` encounters an error:
+
+```cpp
+void f(cvector& v) {
+    // code
+    try {
+        // function will attempt everything in this block
+    }
+    catch (out_of_range) {
+        // function alerts you something went wrong
+        // function will do the following in response to the error
+    }
+    // more code
+}
+```
+
+Okay, now let's get a bit crazy. Consider a user that types the following command in using your custom class:
+
+```cpp
+cvector v(-42);
+```
+Your cvector class has no clue about what the heck is happening with this command. In this case, you'll have to make your try-catch statements as explicit as possible to handle these worst-case scenarios. In this case we could instead write:
+
+```cpp
+cvector::vector(int s) { 
+    if (s < 0) throw length_error{};
+    elem = new double[s];
+    sz = s;
+```
+
+This will now return the standard-library's `length_error` exception to the error and report a non-positive number of elements. 
+
+Or, in the case that the `new` operator finds that there's not enough memory available, it will throw the `std::bad_alloc` exception. Using this feature and `length_error` allows you to access C++'s standard library features for recourse in the case of an error. 
+
+Good practice for error handling is being aware of your *preconditions* Preconditions are things that you assume to be true for your function work. For instance, in our vector function above, we assumed that it would be true that a vector would be initiated with a positive integer number; we also assume that people won't try to access an element beyond the vector's size. 
+
+Once we are aware of those *preconditons*, we can implement good error handling for the cases that violate one of them.
+
+Okay, let's look at this problem again, but this time, let's keep our preconditions in mind. So let's try this block of code:
+
+```cpp
+void test () {
+    try {
+        cvector(-27);
+    }
+    catch (std::length_error) {
+        // what to do in case of negative size error
+    }
+    catch (std::bad_alloc) {
+        // what to do in case of memory exhaustion
+    }
+}
+```
+
+This reports to our user that they tried something that won't work with our custom class! This is good error handling. 
 
 ---
 *__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
