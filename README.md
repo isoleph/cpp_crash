@@ -20,7 +20,11 @@ Have fun!
 
 ## 📝 Table of Contents
 
-[Part One](#part1)
+[Part Zero: Getting Started](#part0)
+- [A Few Words](#few_words)
+- [Installing](#installing)
+
+[Part One: An Introduction](#part1)
 - [Hello World](#hello)
 - [Basic Functions](#functions)
 - [Constants from another File](#constants)
@@ -33,8 +37,96 @@ Have fun!
     - [Enumerations](#enums)
 - [Namespaces](#names)
 - [Error Handling](#error)
+    - [Static Assertions](#static)
 
-# Part One <a name = 'part1'></a>
+[Part Two: The C Standard Library](#cstdlib)
+- [Strings](#strings)
+- [Lists](#lists)
+- [Vectors](#vectors)
+- [Maps](#maps)
+- [Algorithms](#algo)
+
+# 0️⃣ Part Zero <a name='part0'></a>
+
+[Part Zero: Getting Started](#part0)
+- [A Few Words](#few_words)
+- [Installing](#installing)
+
+Welcome to my C++ Guide! I hope that it serves you well whether as a reference guide, a learning material, or both! Before we start, just a few short words in the case that you may not know:
+
+## A Few Words <a name='few_words'></a>
+
+C++, unlike Python, is a [compiled](https://en.wikipedia.org/wiki/Compiled_language) rather than [interpreted](https://en.wikipedia.org/wiki/Interpreted_language) programming language. Here's a nice graphic from Upwork that explains it: 
+
+![Upwork](https://content-static.upwork.com/blog/uploads/sites/3/2015/06/10132943/Compiled-vs-Interpreted-Languages-Comparison.png)
+
+In short, saying that C++ is a *compiled language* is is a fancy way of saying that whatever you write in C++ will get translated into machine code that a computer can read. If you've ever heard of the [assembly](https://en.wikipedia.org/wiki/Assembly_language) programming language, this is a low-level machine code programming language that C++ can compile into. So instead of having to cumbersomely write in assembly, you can write C++ for both efficiency and ease.
+
+Interpreted languages like Python, however, will try to execute commands line by line and create subroutines or modify themselves and *then* translate to machine code. You can read more about interpreted vs. compiled languages [here](https://medium.com/@DHGorman/a-crash-course-in-interpreted-vs-compiled-languages-5531978930b6)!
+
+## What does that mean for us though?
+
+If you're familiar with running python through IDLE or through terminal, then you'll know that executing your program can be very easily done by either typing something like `python3 program.py` or by starting the interpreter and importing your program. 
+
+In C++, however, you don't have immediate access to an in-line interpreter (although [ROOT](https://root.cern.ch/) does a good job). So to execute a program in C++, you'll have to write your program and then *compile* it. This means you have to translate it into something that is machine readable. This is usually done with a command like this in bash:
+
+```bash
+g++ -std=c++17 program.cpp -o program
+chmod +x program.cpp
+./program
+```
+
+Let's go line by line. The first line activates a C++ compiler `g++` to translate your code. There are many other compilers available like clang or oracle. But I use the gnu compiler `g++` because it's very popularly and familar.
+
+In the next line, typing in `-std=c++17` tells your compiler which C++ standard/version you used when you wrote your code. 
+
+`program.cpp` is the name of your program. The `-o` flag instructs the compiler on what to output, and then the output is an executable file called `program`. 
+
+Finally to execute the file we make sure that it is executable by typing what you see in line 2. This gives the program the executable flag so the computer knows it's a file that can be run.
+
+Finally, we run our file using `./program`!
+
+This might seem like a much more convoluted process than just typing `python3 program.py`, but you are completely free to write a custom command that does all of this for you. If you'd like, [check out my dotfiles](http://www.github.com/isoleph/dotfiles) to see what I did!
+
+Now let's find out how to get started on your computer.
+
+## Installing <a name='installing'></a>
+
+If you have a Linux or Windows computer I highly recommend checking out TheChernoProject's setting up tutorials on YouTube. 
+
+I do have a short writeup for what to do for Mac below though since this a work on a Mac environment.  
+
+Here are links for [Linux](https://www.youtube.com/watch?v=LKLuvoY6U0I), [Windows](https://www.youtube.com/watch?v=1OsGXuNA5cc), and [Mac](https://www.youtube.com/watch?v=1E_kBSka_ec).
+
+# macOS
+Before you do anything, I'm sorry but you __must__ download XCode from the App Store. The terminal and developer features on macOS are super stripped down and don't include essential features that you'll need. 
+
+When you're done installing Xcode, be sure to install the command line tools. This can be done by going to the top screen toolbar and clicking Preferences > Components. In this menu, you'll want to make sure the Command Line Tools box si checked and installed. 
+
+When this process is done, you can double check to see that g++ is properly installed by going to terminal and typing:
+
+```bash
+g++ --version
+```
+
+Then you should get the version of g++ that you're using back!
+
+
+# 1️⃣ Part One <a name = 'part1'></a>
+[Part One: An Introduction](#part1)
+- [Hello World](#hello)
+- [Basic Functions](#functions)
+- [Constants from another File](#constants)
+- [Input Variables and Loops](#iandl)
+- [Pointers](#pointers)
+- [Arrays](#arrays)
+- [Structures et al.](#structures)
+    - [Data Structures](#structures)
+    - [Classes](#class)
+    - [Enumerations](#enums)
+- [Namespaces](#names)
+- [Error Handling](#error)
+    - [Static Assertions](#static)
 ## 👋 Hello World! <a name = 'hello'></a>
 [//]: # (refer to hello.c)
 *The code for this part may be seen in* `hello.cpp`
@@ -590,6 +682,45 @@ void test () {
 ```
 
 This reports to our user that they tried something that won't work with our custom class! This is good error handling. 
+
+# Static Assertions <a name='static'></a>
+
+At times, an error won't be identified until the program actually starts running. However, using *static assertions*, you can make these errors identifiable when the program compiles in the first place. Consider the code below that checks if these *assertions* are satisfied.
+
+```cpp
+void f(double speed) {
+    const double c = 299'792'458
+    static_assert(speed<c, "Faster than light not allowed");
+}
+```
+You can see that the `static_assert` function will check that these conditions are met before running the program at all and give you the error message if it finds something wrong!
+
+# 2️⃣ Part Two
+
+[Part Two: The C Standard Library](#cstdlib)
+- [Strings](#strings)
+- [Lists](#lists)
+- [Vectors](#vectors)
+- [Maps](#maps)
+- [Algorithms](#algo)
+
+Let's learn about the C Standard Library! 
+
+You'll notice that C++ is very barebones and doesn't offer a plethora of modules at the ready like Python does, so it's super important to be aware of what libraries already exist so that you don't have to reinvent the wheel!
+
+I once spent a couple of hours writing a project that would read and analyze CSV files for me only to discover that there as already a library for it. Don't be like me!
+
+
+# Strings <a name='strings'></a>
+WIP
+# Lists <a name='lists'></a>
+WIP
+# Vectors <a name='vectors'></a>
+WIP
+# Maps <a name ='maps'></a>
+WIP
+# Algorithms <a name ='algo'></a>
+WIP
 
 ---
 *__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
