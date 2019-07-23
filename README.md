@@ -39,13 +39,6 @@ Have fun!
 - [Error Handling](#error)
     - [Static Assertions](#static)
 
-[Part Two: The C Standard Library](#cstdlib)
-- [Strings](#strings)
-- [Lists](#lists)
-- [Vectors](#vectors)
-- [Maps](#maps)
-- [Algorithms](#algo)
-
 # 0️⃣ Part Zero <a name='part0'></a>
 
 [Part Zero: Getting Started](#part0)
@@ -695,32 +688,7 @@ void f(double speed) {
 ```
 You can see that the `static_assert` function will check that these conditions are met before running the program at all and give you the error message if it finds something wrong!
 
-# 2️⃣ Part Two
-
-[Part Two: The C Standard Library](#cstdlib)
-- [Strings](#strings)
-- [Lists](#lists)
-- [Vectors](#vectors)
-- [Maps](#maps)
-- [Algorithms](#algo)
-
-Let's learn about the C Standard Library! 
-
-You'll notice that C++ is very barebones and doesn't offer a plethora of modules at the ready like Python does, so it's super important to be aware of what libraries already exist so that you don't have to reinvent the wheel!
-
-I once spent a couple of hours writing a project that would read and analyze CSV files for me only to discover that there as already a library for it. Don't be like me!
-
-
-# Strings <a name='strings'></a>
-WIP
-# Lists <a name='lists'></a>
-WIP
-# Vectors <a name='vectors'></a>
-WIP
-# Maps <a name ='maps'></a>
-WIP
-# Algorithms <a name ='algo'></a>
-WIP
+*Coming soon: Part 2: hands-on projects to put the above to practice!*
 
 ---
 *__Note__: This repository is in active development. Any comments or additions are completely welcome! Feel free to report an [issue](https://github.com/isoleph/cpp_crash/issues) or submit a [pull request](https://github.com/isoleph/cpp_crash/pulls).*
