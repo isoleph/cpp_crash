@@ -5,7 +5,7 @@
 <img src=img/cpp.png width = 150> 
   
   [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-  [![GitHub Issues](https://img.shields.io/github/issues/isoleph/cpp_crash.svg)](https://github.com/isoleph/cpp_crash/issues)
+  [![GitHub Issues](https://img.shields.io/github/issues/isoleph/cpp_crash)](https://github.com/isoleph/cpp_crash/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/isoleph/cpp_crash.svg)](https://github.com/isoleph/cpp_crash/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
   [![Tweet](https://img.shields.io/twitter/url/https/shields.io.svg?style=social)](https://twitter.com/risvoi)
