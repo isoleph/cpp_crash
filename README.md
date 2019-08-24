@@ -69,7 +69,7 @@ chmod +x program.cpp
 ./program
 ```
 
-Let's go line by line. The first line activates a C++ compiler `g++` to translate your code. There are many other compilers available like clang or oracle. But I use the gnu compiler `g++` because it's very popularly and familar.
+Let's go line by line. The first line activates a C++ compiler `g++` to translate your code. There are many other compilers available like clang or oracle. But I use the gnu compiler `g++` because it's very popular and familiar.
 
 In the next line, typing in `-std=c++17` tells your compiler which C++ standard/version you used when you wrote your code. 
 
@@ -87,14 +87,14 @@ Now let's find out how to get started on your computer.
 
 If you have a Linux or Windows computer I highly recommend checking out TheChernoProject's setting up tutorials on YouTube. 
 
-I do have a short writeup for what to do for Mac below though since this a work on a Mac environment.  
+I do have a short writeup for what to do for Mac below though since I work in a Mac environment.  
 
 Here are links for [Linux](https://www.youtube.com/watch?v=LKLuvoY6U0I), [Windows](https://www.youtube.com/watch?v=1OsGXuNA5cc), and [Mac](https://www.youtube.com/watch?v=1E_kBSka_ec).
 
 # macOS
 Before you do anything, I'm sorry but you __must__ download XCode from the App Store. The terminal and developer features on macOS are super stripped down and don't include essential features that you'll need. 
 
-When you're done installing Xcode, be sure to install the command line tools. This can be done by going to the top screen toolbar and clicking Preferences > Components. In this menu, you'll want to make sure the Command Line Tools box si checked and installed. 
+When you're done installing Xcode, be sure to install the command line tools. This can be done by going to the top screen toolbar and clicking Preferences > Components. In this menu, you'll want to make sure the Command Line Tools box is checked and installed. 
 
 When this process is done, you can double check to see that g++ is properly installed by going to terminal and typing:
 
@@ -102,7 +102,7 @@ When this process is done, you can double check to see that g++ is properly inst
 g++ --version
 ```
 
-Then you should get the version of g++ that you're using back!
+Then you should get the version of g++ that you're using back! Remember, when you're done writing your code, be sure to compile it like described above! Good luck!
 
 
 # 1️⃣ Part One <a name = 'part1'></a>
