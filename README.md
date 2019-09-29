@@ -12,11 +12,11 @@
 
 </div>
 
-This is a record of all of the C++ files and programs that I have written after closely following Bjarne Stroustrup's [*The C++ Programming Language, 4ed*](http://www.stroustrup.com/4th.html).
+Welcome to the C++ Crash Course! This Crash Course is closely modeled after Bjarne Stroustrup's [*The C++ Programming Language, 4ed*](http://www.stroustrup.com/4th.html). We go over some basic concepts in the C++ programming language, and I'm currently working on some practice projects to put your skills to the test when you feel ready.
 
-This crash-course does assume some prior programming knowledge, specifically with Python; although I do try to make the writing as inclusive as possible.
+Take note that this crash-course does assume some prior programming knowledge, specifically with Python; although I do try to make the writing as inclusive as possible.
 
-Have fun!
+Let's get started!
 
 ## 📝 Table of Contents
 
@@ -45,23 +45,23 @@ Have fun!
 - [A Few Words](#few_words)
 - [Installing](#installing)
 
-Welcome to my C++ Guide! I hope that it serves you well whether as a reference guide, a learning material, or both! Before we start, just a few short words in the case that you may not know:
+Welcome to my C++ Guide! I hope that it serves you well whether as a reference guide, a learning material, or both! Before we start, just a few short words in the case that you may not know.
 
 ## A Few Words <a name='few_words'></a>
 
-C++, unlike Python, is a [compiled](https://en.wikipedia.org/wiki/Compiled_language) rather than [interpreted](https://en.wikipedia.org/wiki/Interpreted_language) programming language. Here's a nice graphic from Upwork that explains it: 
+C++, unlike Python, is a [compiled](https://en.wikipedia.org/wiki/Compiled_language) rather than [interpreted](https://en.wikipedia.org/wiki/Interpreted_language) programming language. This means that unlike Python which goes line by line reading and interpreting your code, C++ will compile all of it into machine language. Here's a nice graphic from Upwork that explains the difference between an interpreter and a compiler.
 
 ![Upwork](https://content-static.upwork.com/blog/uploads/sites/3/2015/06/10132943/Compiled-vs-Interpreted-Languages-Comparison.png)
 
-In short, saying that C++ is a *compiled language* is is a fancy way of saying that whatever you write in C++ will get translated into machine code that a computer can read. If you've ever heard of the [assembly](https://en.wikipedia.org/wiki/Assembly_language) programming language, this is a low-level machine code programming language that C++ can compile into. So instead of having to cumbersomely write in assembly, you can write C++ for both efficiency and ease.
+In short, saying that C++ is a *compiled language* is is a fancy way of saying that whatever you write in C++ will get translated into machine code that a computer can read. If you've ever heard of the [assembly](https://en.wikipedia.org/wiki/Assembly_language) programming language, assembly is a low-level machine code programming language that C++ can compile into. So instead of having to cumbersomely write in assembly, you can write C++ for both efficiency and ease. Compilers usually have the added benefit of going through your code and making it more efficient. This is one of the advantages of knowing C++!
 
-Interpreted languages like Python, however, will try to execute commands line by line and create subroutines or modify themselves and *then* translate to machine code. You can read more about interpreted vs. compiled languages [here](https://medium.com/@DHGorman/a-crash-course-in-interpreted-vs-compiled-languages-5531978930b6)!
+Interpreted languages like Python, however, will try to execute commands line by line, create subroutines, modify themselves and *then* translate to machine code. You can read more about interpreted vs. compiled languages [here](https://medium.com/@DHGorman/a-crash-course-in-interpreted-vs-compiled-languages-5531978930b6)!
 
 ## What does that mean for us though?
 
-If you're familiar with running python through IDLE or through terminal, then you'll know that executing your program can be very easily done by either typing something like `python3 program.py` or by starting the interpreter and importing your program. 
+If you're familiar with running python through IDLE or through terminal, then you'll know that executing your program is easy by either typing something like `python3 program.py` or by starting the interpreter and importing your program. 
 
-In C++, however, you don't have immediate access to an in-line interpreter (although [ROOT](https://root.cern.ch/) does a good job). So to execute a program in C++, you'll have to write your program and then *compile* it. This means you have to translate it into something that is machine readable. This is usually done with a command like this in bash:
+In C++, however, you don't have immediate access to an in-line interpreter (although [ROOT](https://root.cern.ch/) does a great job with their [Cling Interpreter](https://github.com/root-project/cling)). Because C++ isn't interpreted, this means that to execute a program in C++, you'll have to write your program and then *compile* it. This is done with a command to call your compiler, like this in bash:
 
 ```bash
 g++ -std=c++17 program.cpp -o program
@@ -69,15 +69,17 @@ chmod +x program.cpp
 ./program
 ```
 
-Let's go line by line. The first line activates a C++ compiler `g++` to translate your code. There are many other compilers available like clang or oracle. But I use the gnu compiler `g++` because it's very popular and familiar.
+Let's go line by line. The first line activates a C++ compiler `g++` to translate your code. There are many other compilers available like clang or oracle. But I use the gnu compiler `g++` because it's very popular and flexible.
 
 In the next line, typing in `-std=c++17` tells your compiler which C++ standard/version you used when you wrote your code. 
 
 `program.cpp` is the name of your program. The `-o` flag instructs the compiler on what to output, and then the output is an executable file called `program`. 
 
-Finally to execute the file we make sure that it is executable by typing what you see in line 2. This gives the program the executable flag so the computer knows it's a file that can be run.
+Finally to execute the file we make sure that it is executable by typing what you see in line 2 with `chmod +x program.cpp`. This gives the program the executable flag so the computer knows it's a file that can be run.
 
 Finally, we run our file using `./program`!
+
+The end product of this process is creating a [binary executable file](https://en.wikipedia.org/wiki/Binary_file) that your computer knows how to run.
 
 This might seem like a much more convoluted process than just typing `python3 program.py`, but you are completely free to write a custom command that does all of this for you. If you'd like, [check out my dotfiles](http://www.github.com/isoleph/dotfiles) to see what I did!
 
@@ -133,14 +135,15 @@ using namespace std;
 ```
 This "preamble" tells the program to include the `iostream` library that allows input and output to the terminal. 
 
-Then you might see that `using namespace std;` indicates that we are using the standard library namespace. If we didn't do this, then later in our code we would have to write out `std::cout` or `std::endl` explicitly. These functions print out a [string](https://en.wikipedia.org/wiki/String_literal) to the screen or end a line, respectively. 
+Then you might see that `using namespace std;` indicates that we are using the standard library [namespace](#names). If we didn't do this, then later in our code we would have to write out `std::cout` or `std::endl` explicitly. The functions `std::cout` and `std::endl` print out a [string](https://en.wikipedia.org/wiki/String_literal) to the screen and end a line, respectively. 
 
 Bear in mind that the `<<` function pushes the string "Hello World" out to the screen. Likewise the `<< endl` part attaches the endline instance to the end of the "Hello World" string. You can also write `<< '\n'` instead of `<< endl;` but I just do it this way because it looks nicer.  
 
 (You'll see the `<<` work in the opposite way as `>>` when we look at `cin` later)
 
-In our code, you can see that we declare an `int main ()` function that executes our program. This is because in C++, we have to declare what the output of out function must be. So when our program succesfully runs, we have it return 0 to show that it succeeded!
+In our code, you can see that we declare an `int main ()` function at the beginning of our program. This is because in C++, we have to declare what the output of out function must be. So when our program succesfully runs, we have it return 0 to show that it succeeded! Moreover, every program should have a `main()` function so the compiler knows what it should execute when the program runs.
 
+Here's the entirety of our program below:
 ```cpp
 int main () {
   cout << "Hello World!" << endl;
@@ -156,7 +159,7 @@ If everything is working correctly, then after compiling, this will print "Hello
 [//]: # (refer to square.cpp)
 *The code for this part may be found in* `square.cpp`
 
-Let's write a very basic function that outputs the square of soem number we give that function. Let's take a look at the code where:
+Let's write a very basic function that outputs the square of some number we give that function. Let's take a look at the code where:
 ```cpp
 double square(double x) {
   return x*x;
@@ -270,10 +273,10 @@ while (i<4) {
 ```
 You may notice above that we made the while loop check against an int variable i. And every time the loop runs, i grows larger by one until eventually the while statement is no longer true. You can see this at the end of the loop in the line `i++`.
 
-Likewise, if you want to make a loop run forever, you would start it with `while true`. 
+Then in the case that you want to make a loop run forever, you would start it with `while true`. 
 ## 📜 Arrays <a name = 'arrays'></a>
 [//]: # (refer to array, increment, string_array)
-*The code for this part may be found in* `arrasy.cpp`, `increment.cpp`, and `string_array.cpp`.
+*The code for this part may be found in* `arrays.cpp`, `increment.cpp`, and `string_array.cpp`.
 
 Let's take a look at how to make arrays, or lists, in C++. 
 
@@ -416,7 +419,7 @@ If you run the code as is and type 3 numbers as requested, you should get the su
 
 # 🎒 Classes <a name = 'class'></a>
 
-Just as you can define data structures with C++, you can also define a `class` object. These objects allow you to create methods within them that are both public and private for a user to access. A `public` method is accessible to a user whereas a `private` method is only accessible through a user-interface. Let's take a look at the code below. A more in-depth look is  beneath the code block.
+Just as you can define data structures with C++, you can also define a `class` object. Think of classes as structures, with privacy. This means that classes allow you to create methods within them that can be either public or private for a user to access. A `public` method is accessible to a user whereas a `private` method is only accessible to your code. Let's take a look at the code below. A more in-depth look is  beneath the code block.
 
 ```cpp
 class cvector {
